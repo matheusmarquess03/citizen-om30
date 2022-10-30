@@ -17,5 +17,7 @@ module Myapp
     # the framework and any gems in your application.
 
     config.autoload_paths << Rails.root.join("lib/validators")
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
