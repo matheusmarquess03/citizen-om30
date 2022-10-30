@@ -1,4 +1,5 @@
 class Citizen < ApplicationRecord
+  include SmsResource
   has_one :address
   accepts_nested_attributes_for :address
 
@@ -17,12 +18,8 @@ class Citizen < ApplicationRecord
 
   after_save :notify_citizen
 
-  def attributes_for_sms(break_line="\r")
-    attributes = self.attributes.map do |key, value|
-      next unless ['id', 'created_at', 'updated_at', 'photo'].select{|i| key.match(/#{i}/)}.empty?
-      "#{key}: #{value}"
-    end
-    attributes.compact.join(break_line)
+  def attributes_for_sms
+    super(self.attributes.reject! { |a| a =~ /id|created_at|updated_at|photo/ })
   end
 
   private
