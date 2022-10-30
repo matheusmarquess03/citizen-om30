@@ -1,13 +1,12 @@
 FactoryBot.define do
   factory :address do
-    zipcode { "MyString" }
-    public_place { "MyString" }
-    number { "MyString" }
-    complement { "MyString" }
-    neighborhood { "MyString" }
-    city { "MyString" }
-    state { "MyString" }
-    ibge_code { "MyString" }
-    citizen { nil }
+    zipcode { "24716-360" }
+    public_place { "Rua Fernando Galeane" }
+    number { "261" }
+    complement { "Complemento" }
+    neighborhood { "Jardim Catarina" }
+    city { "São Gonçalo" }
+    state { "RJ" }
+    ibge_code { "12345" }
   end
 end
