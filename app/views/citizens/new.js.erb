@@ -1,0 +1,2 @@
+jQuery("#citizen-forms").html("<%= escape_javascript(render 'form', citizen: @citizen) %>");
+$.notify("<%= alert %>", "error");

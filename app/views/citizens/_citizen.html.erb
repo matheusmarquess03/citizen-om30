@@ -1,0 +1,77 @@
+<table>
+    <tr>
+      <th>Full Name:</th>
+       <td><%= citizen.full_name %></td>
+    </tr>
+
+    <tr>
+      <th>CPF:</th>
+      <td><%= citizen.cpf %></td>
+    </tr>
+
+    <tr>
+      <th>Email:</th>
+      <td><%= citizen.email %></td>
+    </tr>
+
+    <tr>
+      <th>Birthdate:</th>
+      <td><%= citizen.birthdate %></td>
+    </tr>
+
+    <tr>
+      <th>Phone:</th>
+      <td><%= citizen.phone %></td>
+    </tr>
+
+    <tr>
+      <th>Status:</th>
+      <td><%= citizen.status %></td>
+    </tr>
+
+    <tr>
+      <th>Photo:</th>
+      <td><%= image_tag(citizen.photo(:medium)) %></td>
+    </tr>
+
+    <tr>
+      <th>Zipcode:</th>
+      <td><%= citizen.address.zipcode %></td>
+    </tr>
+
+    <tr>
+      <th>Public Place:</th>
+      <td><%= citizen.address.public_place %></td>
+    </tr>
+
+    <tr>
+      <th>Number:</th>
+      <td><%= citizen.address.number %></td>
+    </tr>
+
+    <tr>
+      <th>Complement:</th>
+      <td><%= citizen.address.complement %></td>
+    </tr>
+
+    <tr>
+      <th>Neighborhood:</th>
+      <td><%= citizen.address.neighborhood %></td>
+    </tr>
+
+    <tr>
+      <th>City:</th>
+      <td><%= citizen.address.city %></td>
+    </tr>
+
+    <tr>
+      <th>State:</th>
+      <td><%= citizen.address.state %></td>
+    </tr>
+
+    <tr>
+      <th>Ibge Code:</th>
+      <td><%= citizen.address.ibge_code %></td>
+    </tr>
+
+</table>

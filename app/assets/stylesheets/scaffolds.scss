@@ -33,6 +33,7 @@ a {
 }
 
 th {
+  // padding-bottom: 5px;
   font-size: 15px;
 }
 
@@ -81,4 +82,20 @@ div {
 
 label {
   display: block;
+}
+
+.new_citizen{
+  color: #fff !important;
+}
+
+.field_with_errors input{
+  border: 1px solid red;
+}
+
+form-check-input{
+  margin-left: 2px;
+}
+
+#citizen-new{
+  width: 50%;
 }

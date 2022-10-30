@@ -1,0 +1,2 @@
+jQuery(".citizen-details[data-id=<%= @citizen.id %>]").find('td').html("<%= escape_javascript(render @citizen) %>");
+$.notify("<%= notice %>", "success");

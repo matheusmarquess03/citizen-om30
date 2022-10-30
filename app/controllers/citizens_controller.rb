@@ -26,11 +26,15 @@ class CitizensController < ApplicationController
 
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to @citizen, notice: "Citizen was successfully created." }
+        flash.now[:notice] = 'Citizen was created.'
+        format.html { redirect_to @citizen, notice: notice }
         format.json { render :show, status: :created, location: @citizen }
+        format.js { redirect_to citizens_path, notice: notice}
       else
+        flash.now[:alert] = "Citizen was not created."
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @citizen.errors, status: :unprocessable_entity }
+        format.js { render :new, location: @citizen }
       end
     end
   end
@@ -39,11 +43,15 @@ class CitizensController < ApplicationController
   def update
     respond_to do |format|
       if @citizen.update(citizen_params)
-        format.html { redirect_to @citizen, notice: "Citizen was successfully updated." }
+        flash.now[:notice] = "Citizen was updated."
+        format.html { redirect_to @citizen, notice: notice }
         format.json { render :show, status: :ok, location: @citizen }
+        format.js { render :show }
       else
+        flash.now[:alert] = "Citizen was not updated."
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @citizen.errors, status: :unprocessable_entity }
+        format.js { render :edit }
       end
     end
   end
