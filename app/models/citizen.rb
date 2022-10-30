@@ -38,8 +38,10 @@ class Citizen < ApplicationRecord
 
   def notify_citizen
     CitizenMailer.create_or_update(self).deliver_later
-    # SendSmsJob.perform_later(self.phone,
-    #   {title: "Hi #{self.full_name}, your informations of citizen was added or update to:",
-    #   body: (self.attributes_for_sms + self.address.attributes_for_sms)})
+    if Rails.env.production?
+      SendSmsJob.perform_later(self.phone,
+                               {title: "Hi #{self.full_name}, your informations of citizen was added or update to:",
+                                body: (self.attributes_for_sms + self.address.attributes_for_sms)})
+    end
   end
 end
