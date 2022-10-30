@@ -1,34 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @citizen.full_name %>
-</p>
+<table>
+    <tr>
+      <th>Full Name:</th>
+      <td><%= @citizen.full_name %></td>
+    </tr>
 
-<p>
-  <strong>Cpf:</strong>
-  <%= @citizen.cpf %>
-</p>
+    <tr>
+      <th>CPF:</th>
+      <td><%= @citizen.cpf %></td>
+    </tr>
 
-<p>
-  <strong>Email:</strong>
-  <%= @citizen.email %>
-</p>
+    <tr>
+      <th>Email:</th>
+      <td><%= @citizen.email %></td>
+    </tr>
 
-<p>
-  <strong>Birthdate:</strong>
-  <%= @citizen.birthdate %>
-</p>
+    <tr>
+      <th>Birthdate:</th>
+      <td><%= @citizen.birthdate %></td>
+    </tr>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @citizen.phone %>
-</p>
+    <tr>
+      <th>Phone:</th>
+      <td><%= @citizen.phone %></td>
+    </tr>
 
-<p>
-  <strong>Status:</strong>
-  <%= @citizen.status %>
-</p>
+    <tr>
+      <th>Status:</th>
+      <td><%= @citizen.status %></td>
+    </tr>
+</table>
 
 <%= link_to 'Edit', edit_citizen_path(@citizen) %> |
 <%= link_to 'Back', citizens_path %>

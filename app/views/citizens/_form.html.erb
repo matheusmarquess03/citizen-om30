@@ -4,44 +4,46 @@
       <h2><%= pluralize(citizen.errors.count, "error") %> prohibited this citizen from being saved:</h2>
 
       <ul>
-      <% citizen.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% citizen.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name %>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Full Name</span>
+    <%= form.text_field :full_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">CPF</span>
+    <%= form.text_field :cpf, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Email</span>
+    <%= form.text_field :email, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :birthdate %>
-    <%= form.text_field :birthdate %>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Birthdate</span>
+    <%= form.text_field :birthdate, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Phone</span>
+    <%= form.text_field :phone, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.check_box :status %>
+
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Status</span>
+    <%= form.check_box :status, class: 'form-check-input' %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
