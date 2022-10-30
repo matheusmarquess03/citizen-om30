@@ -14,4 +14,12 @@ class Citizen < ApplicationRecord
 
   has_attached_file :photo, styles: { medium: "100x100>", thumb: "30x30>" }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+
+  after_save :notify_citizen
+
+  private
+
+  def notify_citizen
+    CitizenMailer.create_or_update(self).deliver_now
+  end
 end

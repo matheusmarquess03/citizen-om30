@@ -5,7 +5,6 @@ class CpfValidator < ActiveModel::EachValidator
 
   def cpf_valid?(value)
     value = value.to_s
-    value = value.gsub(/[^0-9]/, "")
     digit = value.slice(-2, 2)
     control = ""
     if value.size == 11
