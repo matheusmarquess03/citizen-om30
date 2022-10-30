@@ -30,8 +30,24 @@ function address_auto_complete(){
 
         function cepError(){
             $('.loading').delay(500).hide();
+            $("#citizen_address_attributes_public_place").focus();
             $("input[id*='citizen_address']").val();
             alert("CEP not found. Fill address manualy");
         }
     });
+}
+
+function citizens_mask(){
+    $('#citizen_birthdate').mask('00/00/0000', {placeholder: "__/__/____"});
+    $('#citizen_cpf').mask('000.000.000-00', {placeholder: "xxx.xxx.xxx-xx"});
+    $('#citizen_phone').mask('00 (00) 00000000Z', {
+        placeholder: "xx (xx) xxxxxxxx",
+        translation: {
+            'Z': {
+                pattern: /[0-9]/, optional: true
+            }
+        }
+    });
+
+    $('#citizen_address_attributes_zipcode').mask('00000-000', {placeholder: "00000-000"});
 }
