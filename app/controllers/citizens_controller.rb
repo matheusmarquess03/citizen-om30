@@ -6,7 +6,7 @@ class CitizensController < ApplicationController
     return @citizens = Citizen.search(params[:query], match: :word_middle).results if params[:query]
     @citizens = Citizen.all
   end
-  
+
   # GET /citizens/1 or /citizens/1.json
   def show
   end
