@@ -20,6 +20,6 @@ class Citizen < ApplicationRecord
   private
 
   def notify_citizen
-    CitizenMailer.create_or_update(self).deliver_now
+    CitizenMailer.create_or_update(self).deliver_later
   end
 end

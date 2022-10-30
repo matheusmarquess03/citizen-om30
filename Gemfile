@@ -40,6 +40,7 @@ gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
 gem "paperclip", "~> 6.0.0"
 gem 'sidekiq'
+gem 'twilio-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
