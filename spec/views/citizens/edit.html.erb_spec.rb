@@ -2,14 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "citizens/edit", type: :view do
   before(:each) do
-    @citizen = assign(:citizen, Citizen.create!(
-      full_name: "MyString",
-      cpf: "MyString",
-      email: "MyString",
-      birthdate: "MyString",
-      phone: "MyString",
-      status: false
-    ))
+    @citizen = assign(:citizen, create(:citizen))
   end
 
   it "renders the edit citizen form" do
