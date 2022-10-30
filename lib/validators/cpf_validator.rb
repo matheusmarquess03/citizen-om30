@@ -1,10 +1,15 @@
 class CpfValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    record.errors.add attribute, (options[:message] || "is not valid") unless cpf_valid?(value)
+    record.errors.add attribute, (options[:message] || "is not valid") unless valid_format?(value) && valid_calc?(value)
   end
 
-  def cpf_valid?(value)
+  def valid_format?(value)
+    value.match(/^[\d]{3}.[\d]{3}.[\d]{3}-[\d]{2}$/)
+  end
+
+  def valid_calc?(value)
     value = value.to_s
+    value = value.gsub(/[^0-9]/, "")
     digit = value.slice(-2, 2)
     control = ""
     if value.size == 11
