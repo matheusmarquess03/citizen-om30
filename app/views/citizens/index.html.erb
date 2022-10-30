@@ -2,6 +2,10 @@
   <i class="fa fa-plus"></i> New Citizen
 <% end %>
 
+<%= link_to citizen_search_form_path, class: 'btn btn-info new_citizen', remote: true do %>
+  <i class="fa fa-plus"></i> Find Citizens
+<% end %>
+
 <%= link_to citizens_path, class: 'btn btn-info new_citizen' do %>
   <i class="fa fa-plus"></i> Show All
 <% end %>

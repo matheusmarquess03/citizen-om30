@@ -3,9 +3,10 @@ class CitizensController < ApplicationController
 
   # GET /citizens or /citizens.json
   def index
+    return @citizens = Citizen.search(params[:query], match: :word_middle).results if params[:query]
     @citizens = Citizen.all
   end
-
+  
   # GET /citizens/1 or /citizens/1.json
   def show
   end
@@ -63,6 +64,10 @@ class CitizensController < ApplicationController
       format.html { redirect_to citizens_url, notice: "Citizen was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def search_form
+    render 'citizens/search/show'
   end
 
   private

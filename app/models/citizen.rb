@@ -1,5 +1,7 @@
 class Citizen < ApplicationRecord
   include SmsResource
+  searchkick word_middle: [:full_name, :cpf, :public_place_from_relation]
+
   has_one :address
   accepts_nested_attributes_for :address
 
@@ -22,12 +24,22 @@ class Citizen < ApplicationRecord
     super(self.attributes.reject! { |a| a =~ /id|created_at|updated_at|photo/ })
   end
 
+  def search_data
+    attributes.merge(
+      public_place_from_relation: self.public_place_from_relation
+    )
+  end
+
+  def public_place_from_relation
+    self.address.public_place
+  end
+
   private
 
   def notify_citizen
     CitizenMailer.create_or_update(self).deliver_later
-    endSmsJob.perform_later(self.phone,
-                            {title: "Hi #{self.full_name}, your informations of citizen was added or update to:",
-                             body: (self.attributes_for_sms + self.address.attributes_for_sms)})
+    # SendSmsJob.perform_later(self.phone,
+    #   {title: "Hi #{self.full_name}, your informations of citizen was added or update to:",
+    #   body: (self.attributes_for_sms + self.address.attributes_for_sms)})
   end
 end
