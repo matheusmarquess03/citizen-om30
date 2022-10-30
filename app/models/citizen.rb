@@ -17,9 +17,20 @@ class Citizen < ApplicationRecord
 
   after_save :notify_citizen
 
+  def attributes_for_sms(break_line="\r")
+    attributes = self.attributes.map do |key, value|
+      next unless ['id', 'created_at', 'updated_at', 'photo'].select{|i| key.match(/#{i}/)}.empty?
+      "#{key}: #{value}"
+    end
+    attributes.compact.join(break_line)
+  end
+
   private
 
   def notify_citizen
     CitizenMailer.create_or_update(self).deliver_later
+    endSmsJob.perform_later(self.phone,
+                            {title: "Hi #{self.full_name}, your informations of citizen was added or update to:",
+                             body: (self.attributes_for_sms + self.address.attributes_for_sms)})
   end
 end
