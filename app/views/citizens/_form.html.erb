@@ -42,6 +42,11 @@
     <%= form.check_box :status, class: 'form-check-input' %>
   </div>
 
+  <div class="input-group input-group-sm mb-3">
+    <span class="input-group-text">Photo</span>
+    <%= form.file_field :photo, class: 'form-control' %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

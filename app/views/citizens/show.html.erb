@@ -30,6 +30,11 @@
       <th>Status:</th>
       <td><%= @citizen.status %></td>
     </tr>
+
+    <tr>
+      <th>Photo:</th>
+      <td><%= image_tag(@citizen.photo(:medium)) %></td>
+    </tr>
 </table>
 
 <%= link_to 'Edit', edit_citizen_path(@citizen) %> |

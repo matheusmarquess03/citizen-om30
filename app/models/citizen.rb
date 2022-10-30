@@ -7,4 +7,8 @@ class Citizen < ApplicationRecord
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "is in invalid format" }
   validates :phone, format: { with: /\A^[0-9]{2}\s\([0-9]{2}\)\s[0-9]{4}-[0-9]{4,5}\z/, message: "is in invalid format" }
   validates :status, inclusion: [true, false]
+  validates :photo, presence: true
+
+  has_attached_file :photo, styles: { medium: "100x100>", thumb: "30x30>" }
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 end
