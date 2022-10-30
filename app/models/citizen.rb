@@ -1,4 +1,7 @@
 class Citizen < ApplicationRecord
+  has_one :address
+  accepts_nested_attributes_for :address
+
   validates_presence_of :full_name
   validates :cpf, cpf: true
   validates :birthdate, format: { with: /\A[0-9]{2}\/[0-9]{2}\/[0-9]{4}\z/i, message: "is in invalid format" }

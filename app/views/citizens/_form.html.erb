@@ -47,6 +47,50 @@
     <%= form.file_field :photo, class: 'form-control' %>
   </div>
 
+  <%= form.fields_for :address do |address_fields| %>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">Zipcode</span>
+      <%= address_fields.text_field :zipcode, class: 'form-control' %>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">Public Place</span>
+      <%= address_fields.text_field :public_place, class: 'form-control' %>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">Number</span>
+      <%= address_fields.text_field :number, class: 'form-control' %>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">Complement</span>
+      <%= address_fields.text_field :complement, class: 'form-control' %>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">Neighborhood</span>
+      <%= address_fields.text_field :neighborhood, class: 'form-control' %>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">City</span>
+      <%= address_fields.text_field :city, class: 'form-control' %>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">State</span>
+      <%= address_fields.text_field :state, class: 'form-control' %>
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text">IBGE Code</span>
+      <%= address_fields.text_field :ibge_code, class: 'form-control' %>
+    </div>
+
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>

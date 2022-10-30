@@ -13,6 +13,7 @@ class CitizensController < ApplicationController
   # GET /citizens/new
   def new
     @citizen = Citizen.new
+    @citizen.build_address
   end
 
   # GET /citizens/1/edit
@@ -25,7 +26,7 @@ class CitizensController < ApplicationController
 
     respond_to do |format|
       if @citizen.save
-        format.html { redirect_to citizen_url(@citizen), notice: "Citizen was successfully created." }
+        format.html { redirect_to @citizen, notice: "Citizen was successfully created." }
         format.json { render :show, status: :created, location: @citizen }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class CitizensController < ApplicationController
   def update
     respond_to do |format|
       if @citizen.update(citizen_params)
-        format.html { redirect_to citizen_url(@citizen), notice: "Citizen was successfully updated." }
+        format.html { redirect_to @citizen, notice: "Citizen was successfully updated." }
         format.json { render :show, status: :ok, location: @citizen }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,7 +51,6 @@ class CitizensController < ApplicationController
   # DELETE /citizens/1 or /citizens/1.json
   def destroy
     @citizen.destroy
-
     respond_to do |format|
       format.html { redirect_to citizens_url, notice: "Citizen was successfully destroyed." }
       format.json { head :no_content }
@@ -58,13 +58,14 @@ class CitizensController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_citizen
-      @citizen = Citizen.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_citizen
+    @citizen = Citizen.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def citizen_params
-      params.require(:citizen).permit(:full_name, :cpf, :email, :birthdate, :phone, :status, :photo)
-    end
+  # Only allow a list of trusted parameters through.
+  def citizen_params
+    params.require(:citizen).permit(:full_name, :cpf, :email, :birthdate, :phone, :status, :photo,
+                                    address_attributes: [:id, :zipcode, :public_place, :number, :complement, :neighborhood, :city, :state, :ibge_code])
+  end
 end
