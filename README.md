@@ -1,24 +1,21 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Getting started
 
-Things you may want to cover:
+To start up the application in your local Docker environment:
 
-* Ruby version
+1 - Clone the repository
+```bash
+git clone https://github.com/matheusmarquess03/citizen-om30.git
+cd citizen-om30
+```
 
-* System dependencies
+2 - Build and start Docker
+```bash
+docker-compose build
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3 - See the more commands:
+```bash
+docker-compose up
+docker-compose run --rm web bash
+```
